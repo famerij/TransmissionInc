@@ -1,0 +1,9 @@
+Incoming transmission…
+Calling low-orbit spaceship TS31. This is Houston.
+We’re not able to receive any communication from you, hopefully you’re receiving this message.
+Our scans have detected a control panel failure on your ship.
+The remote override of your ship is still functional, we can remotely assume control to get you back home.
+However, your low-orbit radio antenna uses slow and short-range frequencies, the current transmission delay is too great for us to accurately do that from Earth.
+Your trajectory will have you soon in close proximity with one of our space probes from which we can send the remote commands safely.
+By the time you get this message you’ll be out of communication range from Earth. We’ll send you more instructions once you’re in range of the probe.
+Godspeed.
