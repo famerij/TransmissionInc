@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1234392230814388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.19, y: 2.02, z: -0.093909964}
+  m_LocalPosition: {x: 2.79, y: 1.91, z: -0.093909964}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4829533110815104}
@@ -120,7 +120,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2.21
 --- !u!82 &82917244955683326
 AudioSource:
   m_ObjectHideFlags: 1
@@ -129,7 +129,7 @@ AudioSource:
   m_GameObject: {fileID: 1234392230814388}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243733814372510146, guid: fe7a887e97d9d4e1bb4402bd5688da10,
+  OutputAudioMixerGroup: {fileID: 243684191543035240, guid: fe7a887e97d9d4e1bb4402bd5688da10,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -226,9 +226,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphics: {fileID: 0}
-  soundClip: {fileID: 8300000, guid: 325454385215546f7a6e334592437877, type: 3}
+  soundClip: {fileID: 8300000, guid: 661ddfb5987174d238ac38dbea9b51ee, type: 3}
   destinationSceneName: 2_Level2
-  delayBeforeJump: 0.7
+  delayBeforeJump: 4
 --- !u!114 &114958745134832102
 MonoBehaviour:
   m_ObjectHideFlags: 1
