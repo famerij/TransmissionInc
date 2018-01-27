@@ -55,7 +55,9 @@ public class LevelManager : MonoBehaviour
 			if (d > shipStartFadeDistance)
 			{
 				float alpha = 1.0f - ((shipMaxDistance - d) / (shipMaxDistance - shipStartFadeDistance));
-				fader.SetBlackAlpha(alpha);
+				Color c = new Color(0.25f, 0.0f, 0.0f, alpha);
+				fader.SetColor(c);
+				fader.ShowWarning(alpha > 0.5f);
 				if(d > shipMaxDistance)
 				{
 					Die();
@@ -99,6 +101,7 @@ public class LevelManager : MonoBehaviour
 	private void OnFastGateReached(FastGate fastGate)
 	{
 		Debug.Log("FastGate reached, loading scene: " + fastGate.DestinationSceneName);
+		ship.ToggleEnabled(false);
 		StartCoroutine(DelayedSceneLoad(fastGate.DelayBeforeJump, fastGate.DestinationSceneName));
 	}
 

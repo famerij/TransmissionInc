@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 
 public class FaderInOut : MonoBehaviour
 {
+	[SerializeField] private GameObject warningText;
+
 	public Image black;
 	public FadeType fadeType;
 	public float startDelay = 0;
@@ -26,6 +29,12 @@ public class FaderInOut : MonoBehaviour
 	{
 		StartCoroutine(DoFade());
 	}
+
+	public void ShowWarning(bool show)
+	{
+		warningText.SetActive(show);
+    }
+
 
 	private IEnumerator DoFade()
 	{
@@ -52,11 +61,18 @@ public class FaderInOut : MonoBehaviour
 		OnDone.Invoke();
 	}
 
-	public void SetBlackAlpha(float alpha)
+	// Just use black with alpha
+	private void SetBlackAlpha(float alpha)
 	{
 		Color curColor = black.color;
 		curColor.a = alpha;
 		black.color = curColor;
+	}
+
+	// Switch whole color
+	public void SetColor(Color color)
+	{
+		black.color = color;
 	}
 
 	public enum FadeType
