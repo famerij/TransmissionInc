@@ -9,24 +9,59 @@ public class LevelManager : MonoBehaviour
 	[Header("Transmitters")]
 	[SerializeField] private MessageTransmitter[] enabledTransmitters = new MessageTransmitter[0];
 	[SerializeField] private MessageTransmitter[] disabledTransmitters = new MessageTransmitter[0];
+	[Header("Ship fader&die")]
+	[SerializeField] private float shipStartFadeDistance = 15.0f;
+	[SerializeField] private float shipMaxDistance = 20.0f;
 
 	public UnityEvent AllCollectiblesCollected = new UnityEvent();
 
-	//private Ship ship;
+	private Ship ship;
+	private Vector3 shipStartPosition;
 	private List<Collectible> collectibles = new List<Collectible>();
+	private FaderInOut fader;
 
 	protected void Start ()
 	{
 		foreach(MessageTransmitter t in enabledTransmitters)
 		{
-			t.enabled = true;
+			if (t != null)
+			{
+				t.enabled = true;
+			}
 		}
 		foreach (MessageTransmitter t in disabledTransmitters)
 		{
-			t.enabled = false;
+			if (t != null)
+			{
+				t.enabled = false;
+			}
 		}
 
-		//ship = FindObjectOfType<Ship>();
+		ship = FindObjectOfType<Ship>();
+		shipStartPosition = ship.transform.position;
+
+		fader = FindObjectOfType<FaderInOut>();
+		if(fader == null)
+		{
+			Debug.LogError("No FaderInOut in the scene!");
+		}
+	}
+
+	protected void Update()
+	{
+		if (fader != null)
+		{
+			float d = (ship.transform.position - shipStartPosition).magnitude;
+			if (d > shipStartFadeDistance)
+			{
+				float alpha = 1.0f - ((shipMaxDistance - d) / (shipMaxDistance - shipStartFadeDistance));
+				fader.SetBlackAlpha(alpha);
+				if(d > shipMaxDistance)
+				{
+					Die();
+				}
+			}
+		}
 	}
 
 	public void RegisterCollectible(Collectible c)
@@ -46,10 +81,8 @@ public class LevelManager : MonoBehaviour
 
 	public void OnShipCollided()
 	{
-		//TODO: Restart level
-		Debug.Log("Collision! TODO: Restart level");
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-	}
+		Die();
+    }
 
 	public void OnCollectibleCollected(Collectible collectible)
 	{
@@ -60,5 +93,10 @@ public class LevelManager : MonoBehaviour
 		}
 	}
 
+	private void Die()
+	{
+		Debug.Log("Player died! Restarting scene.");
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
 
 }

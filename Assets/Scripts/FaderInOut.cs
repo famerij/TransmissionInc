@@ -52,7 +52,7 @@ public class FaderInOut : MonoBehaviour
 		OnDone.Invoke();
 	}
 
-	private void SetBlackAlpha(float alpha)
+	public void SetBlackAlpha(float alpha)
 	{
 		Color curColor = black.color;
 		curColor.a = alpha;
