@@ -9,6 +9,7 @@ public class Ship : MonoBehaviour
 	
 	[SerializeField] private float spaceshipSpeed = 1.0f;
 	[SerializeField] private float spaceshipRotationSpeed = 1.0f;
+	[SerializeField] private ParticleSystem mainThruster;
 	[SerializeField] private ParticleSystem leftThruster;
 	[SerializeField] private ParticleSystem rightThruster;
 
@@ -62,12 +63,18 @@ public class Ship : MonoBehaviour
 		this.transform.position += (transform.up * spaceshipSpeed * Time.deltaTime);
 	}
 	
-	
 	public void ToggleEnabled(bool enabled)
 	{
 		isEnabled = enabled;
 		engineAudioSource.enabled = enabled;
 		if (enabled)
+		{
 			engineAudioSource.Play();
+			mainThruster.Play();
+		}
+		else
+		{
+			mainThruster.Stop();
+		}
 	}
 }
