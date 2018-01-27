@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
+	public bool isEnabled = true;
+	
 	[SerializeField] private float spaceshipSpeed = 1.0f;
 	[SerializeField] private float spaceshipRotationSpeed = 1.0f;
 	[SerializeField] private ParticleSystem leftThruster;
@@ -12,7 +14,7 @@ public class Ship : MonoBehaviour
 
 	[Header("Audio")]
 	[SerializeField] private AudioClip collisionSound;
-
+	[SerializeField] private AudioSource engineAudioSource;
 
 	private float rotationRate;
 	public float RotationRate
@@ -46,10 +48,26 @@ public class Ship : MonoBehaviour
 		}
 	}
 
+	void Start()
+	{
+		ToggleEnabled(isEnabled);
+	}
+
 	// Update is called once per frame
 	void Update()
 	{
+		if (!isEnabled) return;
+		
 		this.transform.Rotate(Vector3.forward, RotationRate * spaceshipRotationSpeed * Time.deltaTime);
 		this.transform.position += (transform.up * spaceshipSpeed * Time.deltaTime);
+	}
+	
+	
+	public void ToggleEnabled(bool enabled)
+	{
+		isEnabled = enabled;
+		engineAudioSource.enabled = enabled;
+		if (enabled)
+			engineAudioSource.Play();
 	}
 }

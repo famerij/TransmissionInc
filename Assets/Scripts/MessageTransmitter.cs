@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 public class MessageTransmitter : MonoBehaviour
 {
+	public bool isEnabled = true;
+	
 	[SerializeField] private float messageExpansionSpeed = 2.0f;
 	[SerializeField] private float initialMessageRange = 0.5f;
 	[SerializeField] private float maxMessageRange = -1.0f;
-	[SerializeField] private bool drawMessages;
-	
+	[SerializeField] public bool drawMessages;
 
 	[Header("Audio")]
 	[SerializeField] private AudioClip messageStartSound;
@@ -34,6 +36,8 @@ public class MessageTransmitter : MonoBehaviour
 
 		radios = FindObjectsOfType<ShipRadio>();
 		receivers.AddRange(radios);
+		
+		ToggleEnabled(isEnabled);
     }
 
 	private void CreateMessages()
@@ -96,6 +100,8 @@ public class MessageTransmitter : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		if (!isEnabled) return;
+		
 		CreateMessages();
 
 		// Process message queue:
@@ -168,5 +174,10 @@ public class MessageTransmitter : MonoBehaviour
 			arm = q * arm;
 			Debug.DrawLine(position + lastArm, position + arm, color);
 		}
+	}
+
+	public void ToggleEnabled(bool enabled)
+	{
+		isEnabled = enabled;
 	}
 }
