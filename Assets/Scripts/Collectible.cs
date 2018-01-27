@@ -31,9 +31,14 @@ public class Collectible : MonoBehaviour
 	public void Collect()
 	{
 		Debug.Log("Collected!");
-		Destroy(gameObject);
 		//TODO: Fire off effects, sounds etc.
 		audioSource.PlayOneShot(soundClip);
+		StartCoroutine(DelayedDestroy(soundClip.length));
 	}
 
+	IEnumerator DelayedDestroy(float delay)
+	{
+		yield return new WaitForSeconds(delay);
+		Destroy(gameObject);
+	}
 }
