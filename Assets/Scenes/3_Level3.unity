@@ -427,6 +427,11 @@ Prefab:
       propertyPath: collectionRange
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114913537396044442, guid: 8754ae59bb1f83c438174efc16a136ff,
+        type: 2}
+      propertyPath: spaceShip
+      value: 
+      objectReference: {fileID: 727059927}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8754ae59bb1f83c438174efc16a136ff, type: 2}
   m_IsPrefabParent: 0
