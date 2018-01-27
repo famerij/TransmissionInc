@@ -292,11 +292,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4278658870428234, guid: 8754ae59bb1f83c438174efc16a136ff, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.79
+      value: -1.93
       objectReference: {fileID: 0}
     - target: {fileID: 4278658870428234, guid: 8754ae59bb1f83c438174efc16a136ff, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.91
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 4278658870428234, guid: 8754ae59bb1f83c438174efc16a136ff, type: 2}
       propertyPath: m_LocalPosition.z
@@ -332,6 +332,11 @@ Prefab:
       propertyPath: spaceShip
       value: 
       objectReference: {fileID: 727059927}
+    - target: {fileID: 114913537396044442, guid: 8754ae59bb1f83c438174efc16a136ff,
+        type: 2}
+      propertyPath: destinationSceneName
+      value: 3_Level3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8754ae59bb1f83c438174efc16a136ff, type: 2}
   m_IsPrefabParent: 0
