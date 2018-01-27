@@ -7,7 +7,9 @@ public class Ship : MonoBehaviour
 {
 	[SerializeField] private float spaceshipSpeed = 1.0f;
 	[SerializeField] private float spaceshipRotationSpeed = 1.0f;
-	
+	[SerializeField] private ParticleSystem leftThruster;
+	[SerializeField] private ParticleSystem rightThruster;
+
 	[Header("Audio")]
 	[SerializeField] private AudioClip collisionSound;
 
@@ -18,6 +20,28 @@ public class Ship : MonoBehaviour
 		get { return rotationRate; }
 		set
 		{
+			if(value == 0.0f)
+			{
+				// Stop (counter) previous rotation:
+				if(rotationRate < 0.0f)
+				{
+					rightThruster.Play();
+				}
+				else if (rotationRate > 0.0f)
+				{
+					leftThruster.Play();
+				}
+			}
+
+			// Start new rotation:
+			if(value < 0.0f)
+			{
+				leftThruster.Play();
+			}
+			else if(value > 0.0f)
+			{
+				rightThruster.Play();
+			}
 			rotationRate = value;
 		}
 	}

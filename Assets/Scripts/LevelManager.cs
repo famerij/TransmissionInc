@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
 
 	public UnityEvent AllCollectiblesCollected = new UnityEvent();
 
-	private Ship ship;
+	//private Ship ship;
 	private List<Collectible> collectibles = new List<Collectible>();
 
 	protected void Start ()
@@ -26,38 +26,13 @@ public class LevelManager : MonoBehaviour
 			t.enabled = false;
 		}
 
-		ship = FindObjectOfType<Ship>();
+		//ship = FindObjectOfType<Ship>();
 	}
 
 	public void RegisterCollectible(Collectible c)
 	{
 		collectibles.Add(c);
     }
-
-	//public void OnCollectCollectible(Collectible c)
-	//{
-	//	collectibles.Remove(c);
-	//	if(collectibles.Count == 0)
-	//	{
-	//		OnAllCollectiblesCollected();
- //       }
- //   }
-
-	//protected void Update()
-	//{
-	//	for(int i = collectibles.Count -1; i >= 0; i--)
-	//	{
-	//		if (Utils.InRange(collectibles[i].transform.position, ship.transform.position, collectibles[i].CollectionRange))
-	//		{
-	//			collectibles[i].Collect();
-	//			collectibles.Remove(collectibles[i]);
-	//			if (collectibles.Count == 0)
-	//			{
-	//				OnAllCollectiblesCollected();
-	//			}
-	//		}
-	//	}
-	//}
 
 	private void OnAllCollectiblesCollected()
 	{
