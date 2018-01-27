@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using Random = UnityEngine.Random;
 
 public class ConsoleMessage : MonoBehaviour
 {
@@ -17,9 +18,11 @@ public class ConsoleMessage : MonoBehaviour
 	private int currentLine = 0;
 	private string[] lines;
 	private Coroutine showCharactersCoroutine;
+	private AudioSource audioSource;
 
 	protected void Start ()
 	{
+		audioSource = GetComponent<AudioSource>();
 		text.text = "";
 		lines = script.text.Replace("\r", "").Split(new char[] {'\n'});
 		
@@ -45,6 +48,8 @@ public class ConsoleMessage : MonoBehaviour
 		int totalCharacterCount = lines[currentLine].Length;
 		while (text.maxVisibleCharacters < totalCharacterCount)
 		{
+			audioSource.pitch = Random.Range(0.5f, 1f);
+			audioSource.Play();
 			text.maxVisibleCharacters++;
 			yield return new WaitForSeconds(pausePerCharacter);
 		}
