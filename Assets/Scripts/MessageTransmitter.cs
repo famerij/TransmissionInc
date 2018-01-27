@@ -84,8 +84,9 @@ public class MessageTransmitter : MonoBehaviour
 				{
 					messageBufferCounter = 0;
 				}
-
-				audioSource.PlayOneShot(messageEndSound);
+				
+				if (drawMessages)
+					audioSource.PlayOneShot(messageEndSound);
 			}
 		}
 	}
