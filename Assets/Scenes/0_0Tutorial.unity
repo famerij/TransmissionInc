@@ -289,6 +289,7 @@ MonoBehaviour:
   transmitter: {fileID: 1563206724}
   levelEndFadeOut: {fileID: 428243718}
   nextLevel: 0_1Prologue
+  levelManager: {fileID: 1905796269}
   tumbleTime: 2
 --- !u!4 &1291583052
 Transform:
@@ -576,6 +577,8 @@ MonoBehaviour:
   enabledTransmitters:
   - {fileID: 1563206724}
   disabledTransmitters: []
+  shipStartFadeDistance: 15
+  shipMaxDistance: 20
   AllCollectiblesCollected:
     m_PersistentCalls:
       m_Calls:

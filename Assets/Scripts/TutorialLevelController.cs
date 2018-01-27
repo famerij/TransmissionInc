@@ -9,6 +9,7 @@ public class TutorialLevelController : MonoBehaviour
 	public MessageTransmitter transmitter;
 	public FaderInOut levelEndFadeOut;
 	public string nextLevel;
+	public LevelManager levelManager;
 
 	public float tumbleTime = 2f;
 
@@ -18,6 +19,7 @@ public class TutorialLevelController : MonoBehaviour
 	{
 		transmitter.enabled = false;
 		ship.enabled = false;
+		levelManager.enabled = false;
 
 		spinRoutine = StartCoroutine(SpinAndEndLevel());
 	}
@@ -41,7 +43,7 @@ public class TutorialLevelController : MonoBehaviour
 			xSpeed += 1.1f * Time.deltaTime;
 			shipTransform.Rotate(0, 0, -Time.deltaTime * 250);
 			shipTransform.position = new Vector3(shipTransform.position.x + xSpeed * Time.deltaTime,
-				shipTransform.position.y + 1.0f * Time.deltaTime, shipTransform.position.z);
+				shipTransform.position.y - 0.5f * Time.deltaTime, shipTransform.position.z);
 			yield return null;
 		}
 	}
