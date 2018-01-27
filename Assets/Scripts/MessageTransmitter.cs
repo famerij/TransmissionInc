@@ -7,17 +7,19 @@ public class MessageTransmitter : MonoBehaviour
 	[SerializeField] private float messageExpansionSpeed = 2.0f;
 	[SerializeField] private float initialMessageRange = 0.5f;
 	[SerializeField] private bool drawMessages;
-
+	
 
 	[Header("Audio")]
 	[SerializeField] private AudioClip messageStartSound;
 	[SerializeField] private AudioClip messageEndSound;
+	[SerializeField] private float maxDistanceDiminish = 50f;
 
 	private Message[] messageBuffer = new Message[200];
 	private int messageBufferCounter = 0;
 	private int messagesInUseCount;
 	private List<IMessageReceiver> receivers = new List<IMessageReceiver>();
 	private AudioSource audioSource;
+	private ShipRadio[] radios;
 
 	// Use this for initialization
 	void Start()
@@ -29,7 +31,7 @@ public class MessageTransmitter : MonoBehaviour
 			messageBuffer[i] = new Message();
 		}
 
-		ShipRadio[] radios = FindObjectsOfType<ShipRadio>();
+		radios = FindObjectsOfType<ShipRadio>();
 		receivers.AddRange(radios);
     }
 
@@ -117,6 +119,12 @@ public class MessageTransmitter : MonoBehaviour
 				}
 			}
 		}
+
+		var distanceToRadio = Vector3.Distance(transform.position, radios[0].transform.position);
+		var distanceToRadioRatio = distanceToRadio / maxDistanceDiminish;
+//		Debug.LogFormat("Distance: {0:0.0}, Ratio: {1:0.0}", distanceToRadio, distanceToRadioRatio);
+		audioSource.volume = Mathf.Clamp(1f - distanceToRadioRatio, 0.2f, 1f);
+//		Debug.LogFormat("Distance to radio {0:0.0}", Vector3.Distance(transform.position, radios[0].transform.position));
 	}
 
 	private void DrawMessage(Message msg)
