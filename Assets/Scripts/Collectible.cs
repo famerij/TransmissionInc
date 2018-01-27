@@ -5,15 +5,13 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-	[SerializeField] private float collectionRange = 2.0f;
+	[SerializeField] private GameObject graphics;
 
 	[Header("Audio")]
 	[SerializeField] private AudioClip soundClip;
 
 	private LevelManager levelManager;
 	private AudioSource audioSource;
-	
-	public float CollectionRange {  get { return collectionRange; } }
 
 	protected void OnEnable()
 	{
@@ -33,6 +31,7 @@ public class Collectible : MonoBehaviour
 		Debug.Log("Collected!");
 		//TODO: Fire off effects, sounds etc.
 		audioSource.PlayOneShot(soundClip);
+		graphics.SetActive(false);
 		StartCoroutine(DelayedDestroy(soundClip.length));
 	}
 
@@ -41,6 +40,7 @@ public class Collectible : MonoBehaviour
 		yield return new WaitForSeconds(delay);
 		Destroy(gameObject);
 	}
+
 	void OnCollisionEnter2D(Collision2D coll)
 	{
 		Ship ship = coll.gameObject.GetComponent<Ship>();
