@@ -16,4 +16,7 @@ public class Message
 	public bool right;
 	// For up/down style:
 	public CommandType commandType;
+
+	// Created later!
+	public GameObject visual;
 }

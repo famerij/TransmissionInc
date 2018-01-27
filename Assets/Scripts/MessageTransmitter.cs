@@ -11,6 +11,10 @@ public class MessageTransmitter : MonoBehaviour
 	[SerializeField] private float initialMessageRange = 0.5f;
 	[SerializeField] private float maxMessageRange = -1.0f;
 	[SerializeField] public bool drawMessages;
+	[SerializeField] private GameObject messageVisualPrefab;
+	[SerializeField] private Color messageLeftColor = Color.green;
+	[SerializeField] private Color messageRightColor = Color.blue;
+	[SerializeField] private Color messageStopColor = Color.red;
 
 	[Header("Audio")]
 	[SerializeField] private AudioClip messageStartSound;
@@ -23,6 +27,8 @@ public class MessageTransmitter : MonoBehaviour
 	private List<IMessageReceiver> receivers = new List<IMessageReceiver>();
 	private AudioSource audioSource;
 	private ShipRadio[] radios;
+
+	private List<GameObject> messageVisuals = new List<GameObject>();
 
 	// Use this for initialization
 	void Start()
@@ -58,6 +64,12 @@ public class MessageTransmitter : MonoBehaviour
 				messageBuffer[messageBufferCounter].creationPosition = transform.position;
 				messageBuffer[messageBufferCounter].inUse = true;
 				messageBuffer[messageBufferCounter].commandType = Message.CommandType.Begin;
+
+				messageBuffer[messageBufferCounter].visual = GetMessageVisual();
+				messageBuffer[messageBufferCounter].visual.transform.position = transform.position;
+				Color msgColor = leftDown ? messageLeftColor : messageRightColor;
+                messageBuffer[messageBufferCounter].visual.GetComponentInChildren<SpriteRenderer>().color = msgColor;
+
 				messageBufferCounter++;
 				if(messageBufferCounter == messageBuffer.Length)
 				{
@@ -85,6 +97,11 @@ public class MessageTransmitter : MonoBehaviour
 				messageBuffer[messageBufferCounter].creationPosition = transform.position;
 				messageBuffer[messageBufferCounter].inUse = true;
 				messageBuffer[messageBufferCounter].commandType = Message.CommandType.End;
+
+				messageBuffer[messageBufferCounter].visual = GetMessageVisual();
+				messageBuffer[messageBufferCounter].visual.transform.position = transform.position;
+				messageBuffer[messageBufferCounter].visual.GetComponentInChildren<SpriteRenderer>().color = messageStopColor;
+
 				messageBufferCounter++;
 				if(messageBufferCounter == messageBuffer.Length)
 				{
@@ -118,20 +135,25 @@ public class MessageTransmitter : MonoBehaviour
 					DrawMessage(msg);
 				}
 
-				for(int r = 0; r < receivers.Count; r++)
+				GameObject visual = msg.visual;
+				visual.SetActive(true);
+				visual.transform.localScale = new Vector3(msg.range, msg.range, msg.range);
+
+
+				for (int r = 0; r < receivers.Count; r++)
 				{
 					if (receivers[r].ReceivedMessage(msg, this))
 					{
 						// For now only one receiver can receive it
-						msg.inUse = false;
+						KillMessage(msg);
 					}
 				}
 
 				// Cap the message range if max is set:
 				if(maxMessageRange > 0.0f && msg.range >= maxMessageRange)
 				{
-					msg.inUse = false;
-				}
+					KillMessage(msg);
+                }
 			}
 		}
 
@@ -140,6 +162,13 @@ public class MessageTransmitter : MonoBehaviour
 //		Debug.LogFormat("Distance: {0:0.0}, Ratio: {1:0.0}", distanceToRadio, distanceToRadioRatio);
 		audioSource.volume = Mathf.Clamp(1f - distanceToRadioRatio, 0.2f, 1f);
 //		Debug.LogFormat("Distance to radio {0:0.0}", Vector3.Distance(transform.position, radios[0].transform.position));
+	}
+
+	private void KillMessage(Message msg)
+	{
+		msg.inUse = false;
+		msg.visual.SetActive(false);
+		msg.visual = null;
 	}
 
 	private void DrawMessage(Message msg)
@@ -179,5 +208,28 @@ public class MessageTransmitter : MonoBehaviour
 	public void ToggleEnabled(bool enabled)
 	{
 		isEnabled = enabled;
+	}
+
+	private GameObject GetMessageVisual()
+	{
+		GameObject result = null;
+		for(int i = 0; i < messageVisuals.Count; i++)
+		{
+			if(!messageVisuals[i].activeSelf)
+			{
+				result = messageVisuals[i];
+				break;
+			}
+		}
+
+		if(result == null)
+		{
+			GameObject go = Instantiate<GameObject>(messageVisualPrefab, transform);
+			messageVisuals.Add(go);
+			result = go;
+			Debug.Log("Created new visual number: " + messageVisuals.Count);
+		}
+
+		return result;
 	}
 }

@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: 85afd4e61e8773d41b2e9cfe074d984f
-timeCreated: 1516992369
+timeCreated: 1517085937
 licenseType: Free
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - messageVisualPrefab: {fileID: 1104339558092756, guid: 55f096706a20fae498b450549da95f1a,
+      type: 2}
+  - messageStartSound: {instanceID: 0}
+  - messageEndSound: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

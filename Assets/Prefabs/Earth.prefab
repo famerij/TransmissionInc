@@ -51,7 +51,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1759584896154776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.89, y: -5.45, z: 0}
+  m_LocalPosition: {x: -7.99, y: -4.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4983018526584424}
@@ -163,9 +163,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85afd4e61e8773d41b2e9cfe074d984f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 0
   messageExpansionSpeed: 3.5
   initialMessageRange: 0.5
+  maxMessageRange: -1
   drawMessages: 1
+  messageVisualPrefab: {fileID: 1104339558092756, guid: 55f096706a20fae498b450549da95f1a,
+    type: 2}
+  messageLeftColor: {r: 0, g: 1, b: 0, a: 1}
+  messageRightColor: {r: 0, g: 0, b: 1, a: 1}
+  messageStopColor: {r: 1, g: 0, b: 0, a: 1}
   messageStartSound: {fileID: 8300000, guid: 30f77d953f81144e28c762498221d475, type: 3}
   messageEndSound: {fileID: 8300000, guid: 6eaa7571b662a444ebfb9dadf3e52c28, type: 3}
   maxDistanceDiminish: 50
