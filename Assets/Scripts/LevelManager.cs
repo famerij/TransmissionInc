@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -28,35 +29,35 @@ public class LevelManager : MonoBehaviour
 		ship = FindObjectOfType<Ship>();
 	}
 
-	public void AddCollectible(Collectible c)
+	public void RegisterCollectible(Collectible c)
 	{
 		collectibles.Add(c);
     }
 
-	public void OnCollectCollectible(Collectible c)
-	{
-		collectibles.Remove(c);
-		if(collectibles.Count == 0)
-		{
-			OnAllCollectiblesCollected();
-        }
-    }
+	//public void OnCollectCollectible(Collectible c)
+	//{
+	//	collectibles.Remove(c);
+	//	if(collectibles.Count == 0)
+	//	{
+	//		OnAllCollectiblesCollected();
+ //       }
+ //   }
 
-	protected void Update()
-	{
-		for(int i = collectibles.Count -1; i >= 0; i--)
-		{
-			if (Utils.InRange(collectibles[i].transform.position, ship.transform.position, collectibles[i].CollectionRange))
-			{
-				collectibles[i].Collect();
-				collectibles.Remove(collectibles[i]);
-				if (collectibles.Count == 0)
-				{
-					OnAllCollectiblesCollected();
-				}
-			}
-		}
-	}
+	//protected void Update()
+	//{
+	//	for(int i = collectibles.Count -1; i >= 0; i--)
+	//	{
+	//		if (Utils.InRange(collectibles[i].transform.position, ship.transform.position, collectibles[i].CollectionRange))
+	//		{
+	//			collectibles[i].Collect();
+	//			collectibles.Remove(collectibles[i]);
+	//			if (collectibles.Count == 0)
+	//			{
+	//				OnAllCollectiblesCollected();
+	//			}
+	//		}
+	//	}
+	//}
 
 	private void OnAllCollectiblesCollected()
 	{
@@ -67,5 +68,22 @@ public class LevelManager : MonoBehaviour
 			AllCollectiblesCollected.Invoke();
         }
 	}
+
+	public void OnShipCollided()
+	{
+		//TODO: Restart level
+		Debug.Log("Collision! TODO: Restart level");
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	public void OnCollectibleCollected(Collectible collectible)
+	{
+		collectibles.Remove(collectible);
+		if (collectibles.Count == 0)
+		{
+			OnAllCollectiblesCollected();
+		}
+	}
+
 
 }

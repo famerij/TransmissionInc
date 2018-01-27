@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 81335384568957230}
   - component: {fileID: 114882174103827818}
   - component: {fileID: 114129648851206044}
+  - component: {fileID: 114492193149629056}
   m_Layer: 0
   m_Name: GameplayCamera
   m_TagString: MainCamera
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1935034551289880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.9481397, y: -2.478, z: -10}
+  m_LocalPosition: {x: -6.787343, y: -3.3742857, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4219041473572950}
@@ -95,7 +96,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 7.32
+  orthographic size: 4.34
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -138,7 +139,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 7.32
+    OrthographicSize: 4.34
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -154,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LookaheadTime: 0
+  m_LookaheadTime: 1
   m_LookaheadSmoothing: 19
   m_XDamping: 1
   m_YDamping: 2
@@ -181,6 +182,22 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 7
   m_MaximumOrthoSize: 9.5
+--- !u!114 &114492193149629056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1935034551289880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 0}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
 --- !u!114 &114834199144603198
 MonoBehaviour:
   m_ObjectHideFlags: 1

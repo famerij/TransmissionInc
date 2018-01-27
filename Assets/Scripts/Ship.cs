@@ -11,6 +11,7 @@ public class Ship : MonoBehaviour
 	[Header("Audio")]
 	[SerializeField] private AudioClip collisionSound;
 
+
 	private float rotationRate;
 	public float RotationRate
 	{
@@ -20,9 +21,9 @@ public class Ship : MonoBehaviour
 			rotationRate = value;
 		}
 	}
-	
+
 	// Update is called once per frame
-	void Update ()
+	void Update()
 	{
 		this.transform.Rotate(Vector3.forward, RotationRate * spaceshipRotationSpeed * Time.deltaTime);
 		this.transform.position += (transform.up * spaceshipSpeed * Time.deltaTime);

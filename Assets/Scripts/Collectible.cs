@@ -18,17 +18,17 @@ public class Collectible : MonoBehaviour
 	protected void OnEnable()
 	{
 		levelManager = FindObjectOfType<LevelManager>();
-		levelManager.AddCollectible(this);
 		audioSource = GetComponent<AudioSource>();
+		levelManager.RegisterCollectible(this);
 	}
 
 	protected void Update()
 	{
-		Utils.DrawCircle(transform.position, collectionRange, Color.red);
+		//Utils.DrawCircle(transform.position, collectionRange, Color.red);
 	}
 
 
-	public void Collect()
+	public virtual void Collect()
 	{
 		Debug.Log("Collected!");
 		//TODO: Fire off effects, sounds etc.
@@ -41,4 +41,19 @@ public class Collectible : MonoBehaviour
 		yield return new WaitForSeconds(delay);
 		Destroy(gameObject);
 	}
+	void OnCollisionEnter2D(Collision2D coll)
+	{
+		Ship ship = coll.gameObject.GetComponent<Ship>();
+		if (ship != null)
+		{
+			LevelManager levelManager = FindObjectOfType<LevelManager>();
+			if (levelManager != null)
+			{
+				levelManager.OnCollectibleCollected(this);
+			}
+		}
+
+		Collect();
+	}
+
 }

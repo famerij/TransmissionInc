@@ -51,7 +51,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1759584896154776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.99, y: -4.18, z: 0}
+  m_LocalPosition: {x: -10.89, y: -5.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4983018526584424}
@@ -166,8 +166,8 @@ MonoBehaviour:
   messageExpansionSpeed: 3.5
   initialMessageRange: 0.5
   drawMessages: 1
-  messageStartSound: {fileID: 8300000, guid: 30f77d953f81144e28c762498221d475, type: 3}
-  messageEndSound: {fileID: 8300000, guid: 6eaa7571b662a444ebfb9dadf3e52c28, type: 3}
+  messageStartSound: {fileID: 0}
+  messageEndSound: {fileID: 0}
 --- !u!212 &212444921278479710
 SpriteRenderer:
   m_ObjectHideFlags: 1
