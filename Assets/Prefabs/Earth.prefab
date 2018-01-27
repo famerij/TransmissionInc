@@ -166,8 +166,9 @@ MonoBehaviour:
   messageExpansionSpeed: 3.5
   initialMessageRange: 0.5
   drawMessages: 1
-  messageStartSound: {fileID: 0}
-  messageEndSound: {fileID: 0}
+  messageStartSound: {fileID: 8300000, guid: 30f77d953f81144e28c762498221d475, type: 3}
+  messageEndSound: {fileID: 8300000, guid: 6eaa7571b662a444ebfb9dadf3e52c28, type: 3}
+  maxDistanceDiminish: 50
 --- !u!212 &212444921278479710
 SpriteRenderer:
   m_ObjectHideFlags: 1
