@@ -272,6 +272,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114302485098653434, guid: eb28775364ee3624b8597a90e2fc9a8c,
+        type: 2}
+      propertyPath: isEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114379952266639760, guid: eb28775364ee3624b8597a90e2fc9a8c,
+        type: 2}
+      propertyPath: isEnabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb28775364ee3624b8597a90e2fc9a8c, type: 2}
   m_IsPrefabParent: 0
@@ -506,6 +516,8 @@ MonoBehaviour:
   enabledTransmitters:
   - {fileID: 1563206724}
   disabledTransmitters: []
+  shipStartFadeDistance: 15
+  shipMaxDistance: 20
   AllCollectiblesCollected:
     m_PersistentCalls:
       m_Calls:
@@ -685,7 +697,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4585298037629254, guid: b226ccd8934b16b43b6ee312e53d5e5d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.0010819673
+      value: 0.0012283474
       objectReference: {fileID: 0}
     - target: {fileID: 4585298037629254, guid: b226ccd8934b16b43b6ee312e53d5e5d, type: 2}
       propertyPath: m_LocalPosition.y
