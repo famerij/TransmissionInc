@@ -11,12 +11,14 @@ public class PrologueLevelController : MonoBehaviour
 
 	public float tumbleTime = 2f;
 
+	private Coroutine spinRoutine;
+
 	public void AllCollectablesCollected()
 	{
 		transmitter.enabled = false;
 		ship.enabled = false;
 
-		StartCoroutine(SpinAndEndLevel());
+		spinRoutine = StartCoroutine(SpinAndEndLevel());
 	}
 
 	private IEnumerator SpinAndEndLevel()
@@ -45,6 +47,13 @@ public class PrologueLevelController : MonoBehaviour
 
 	public void OnLevelEndFadeOutComplete()
 	{
+		StopCoroutine(spinRoutine);
+		StartCoroutine(WaitThenEndLevel());
+	}
+
+	public IEnumerator WaitThenEndLevel()
+	{
+		yield return new WaitForSeconds(2);
 		SceneManager.LoadScene("1_Level1");
 	}
 }
