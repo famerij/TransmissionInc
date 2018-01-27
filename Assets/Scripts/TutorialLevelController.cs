@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PrologueLevelController : MonoBehaviour
+public class TutorialLevelController : MonoBehaviour
 {
 	public Ship ship;
 	public MessageTransmitter transmitter;
