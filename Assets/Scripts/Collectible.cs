@@ -8,10 +8,10 @@ public class Collectible : MonoBehaviour
 	[SerializeField] private GameObject graphics;
 
 	[Header("Audio")]
-	[SerializeField] private AudioClip soundClip;
+	[SerializeField] protected AudioClip soundClip;
 
 	private LevelManager levelManager;
-	private AudioSource audioSource;
+	protected AudioSource audioSource;
 
 	protected void OnEnable()
 	{
@@ -20,16 +20,10 @@ public class Collectible : MonoBehaviour
 		levelManager.RegisterCollectible(this);
 	}
 
-	protected void Update()
-	{
-		//Utils.DrawCircle(transform.position, collectionRange, Color.red);
-	}
-
-
 	public virtual void Collect()
 	{
-		Debug.Log("Collected!");
-		//TODO: Fire off effects, sounds etc.
+		Debug.Log("Collected: " + gameObject.name);
+		//TODO: Fire off effects if any are made
 		audioSource.PlayOneShot(soundClip);
 		graphics.SetActive(false);
 		StartCoroutine(DelayedDestroy(soundClip.length));

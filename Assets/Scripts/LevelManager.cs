@@ -69,16 +69,6 @@ public class LevelManager : MonoBehaviour
 		collectibles.Add(c);
     }
 
-	private void OnAllCollectiblesCollected()
-	{
-		//TODO: level done etc.
-		Debug.Log("All collectibles collected");
-		if(AllCollectiblesCollected != null)
-		{
-			AllCollectiblesCollected.Invoke();
-        }
-	}
-
 	public void OnShipCollided()
 	{
 		Die();
@@ -91,6 +81,31 @@ public class LevelManager : MonoBehaviour
 		{
 			OnAllCollectiblesCollected();
 		}
+
+		if(collectible is FastGate)
+		{
+			OnFastGateReached(collectible as FastGate);
+		}
+	}
+
+	private void OnAllCollectiblesCollected()
+	{
+		if (AllCollectiblesCollected != null)
+		{
+			AllCollectiblesCollected.Invoke();
+		}
+	}
+
+	private void OnFastGateReached(FastGate fastGate)
+	{
+		Debug.Log("FastGate reached, loading scene: " + fastGate.DestinationSceneName);
+		StartCoroutine(DelayedSceneLoad(fastGate.DelayBeforeJump, fastGate.DestinationSceneName));
+	}
+
+	private IEnumerator DelayedSceneLoad(float delay, string sceneName)
+	{
+		yield return new WaitForSeconds(delay);
+		SceneManager.LoadScene(sceneName);
 	}
 
 	private void Die()
