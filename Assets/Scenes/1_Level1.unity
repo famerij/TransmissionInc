@@ -383,6 +383,11 @@ Prefab:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 114356626374545316, guid: 51c821c0eb16743d1a724c5534bd3f35,
+        type: 2}
+      propertyPath: script
+      value: 
+      objectReference: {fileID: 4900000, guid: 016387720f1f04f10b0309cfd5001129, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51c821c0eb16743d1a724c5534bd3f35, type: 2}
   m_IsPrefabParent: 0
