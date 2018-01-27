@@ -6,11 +6,13 @@ public class MessageTransmitter : MonoBehaviour
 {
 	[SerializeField] private float messageExpansionSpeed = 2.0f;
 	[SerializeField] private float initialMessageRange = 0.5f;
-	
+	[SerializeField] private bool drawMessages;
+
+
 	[Header("Audio")]
 	[SerializeField] private AudioClip messageStartSound;
 	[SerializeField] private AudioClip messageEndSound;
-	
+
 	private Message[] messageBuffer = new Message[200];
 	private int messageBufferCounter = 0;
 	private int messagesInUseCount;
@@ -21,7 +23,7 @@ public class MessageTransmitter : MonoBehaviour
 	void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
-		
+
 		for (int i = 0; i < messageBuffer.Length; i++)
 		{
 			messageBuffer[i] = new Message();
@@ -54,7 +56,7 @@ public class MessageTransmitter : MonoBehaviour
 				{
 					messageBufferCounter = 0;
 				}
-				
+
 				audioSource.PlayOneShot(messageStartSound);
 			}
 		}
@@ -80,17 +82,17 @@ public class MessageTransmitter : MonoBehaviour
 				{
 					messageBufferCounter = 0;
 				}
-				
+
 				audioSource.PlayOneShot(messageEndSound);
 			}
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update ()
 	{
 		CreateMessages();
-		
+
 		// Process message queue:
 		messagesInUseCount = 0;
 		for (int i = 0; i < messageBuffer.Length; i++)
@@ -100,7 +102,10 @@ public class MessageTransmitter : MonoBehaviour
 			{
 				messagesInUseCount++;
 				messageBuffer[i].range += (messageExpansionSpeed * Time.deltaTime);
-				DrawMessage(msg);
+				if (drawMessages)
+				{
+					DrawMessage(msg);
+				}
 
 				for(int r = 0; r < receivers.Count; r++)
 				{

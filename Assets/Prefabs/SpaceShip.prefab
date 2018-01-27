@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4663404189111450}
   - component: {fileID: 114302485098653434}
   - component: {fileID: 114874063802342024}
+  - component: {fileID: 114379952266639760}
   m_Layer: 0
   m_Name: SpaceShip
   m_TagString: Untagged
@@ -114,6 +115,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceshipSpeed: 1.5
   spaceshipRotationSpeed: 45
+--- !u!114 &114379952266639760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1065362525767134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85afd4e61e8773d41b2e9cfe074d984f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messageExpansionSpeed: 2
+  initialMessageRange: 1
 --- !u!114 &114874063802342024
 MonoBehaviour:
   m_ObjectHideFlags: 1
