@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceshipSpeed: 1.5
   spaceshipRotationSpeed: 45
+  collisionSound: {fileID: 8300000, guid: 9869dd7d9b1ab4c7fa5a82924a3e7b55, type: 3}
 --- !u!114 &114379952266639760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,6 +129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageExpansionSpeed: 2
   initialMessageRange: 1
+  drawMessages: 0
+  messageStartSound: {fileID: 0}
+  messageEndSound: {fileID: 0}
 --- !u!114 &114874063802342024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c4b30241d27174eb148c3e54c95de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thrusterTurnSound: {fileID: 8300000, guid: eb4af0b5a52e241a4b55869fe9db548d, type: 3}
 --- !u!212 &212019844792236998
 SpriteRenderer:
   m_ObjectHideFlags: 1
