@@ -14,6 +14,8 @@ public class EpilogueLevelController : MonoBehaviour
 	public float pausePerLine = 1.75f;
 	public float pauseLastLine = 3f;
 
+	private bool reportDone = false;
+
 	public void Start()
 	{
 		missionReportCanvasGroup.gameObject.SetActive(false);
@@ -60,6 +62,17 @@ public class EpilogueLevelController : MonoBehaviour
 				yield return new WaitForSeconds(pausePerCharacter);
 			}
 			yield return new WaitForSeconds(i == texts.Length - 2 ? pauseLastLine : pausePerLine);
+		}
+
+		reportDone = true;
+	}
+
+	void Update()
+	{
+		if (reportDone && Input.anyKeyDown)
+		{
+			Debug.Log("Quitting game.");
+			Application.Quit();
 		}
 	}
 }
