@@ -6,15 +6,22 @@ public class MessageTransmitter : MonoBehaviour
 {
 	[SerializeField] private float messageExpansionSpeed = 2.0f;
 	[SerializeField] private float initialMessageRange = 0.5f;
-
+	
+	[Header("Audio")]
+	[SerializeField] private AudioClip messageStartSound;
+	[SerializeField] private AudioClip messageEndSound;
+	
 	private Message[] messageBuffer = new Message[200];
 	private int messageBufferCounter = 0;
 	private int messagesInUseCount;
 	private List<IMessageReceiver> receivers = new List<IMessageReceiver>();
+	private AudioSource audioSource;
 
 	// Use this for initialization
 	void Start()
 	{
+		audioSource = GetComponent<AudioSource>();
+		
 		for (int i = 0; i < messageBuffer.Length; i++)
 		{
 			messageBuffer[i] = new Message();
@@ -47,6 +54,8 @@ public class MessageTransmitter : MonoBehaviour
 				{
 					messageBufferCounter = 0;
 				}
+				
+				audioSource.PlayOneShot(messageStartSound);
 			}
 		}
 
@@ -71,6 +80,8 @@ public class MessageTransmitter : MonoBehaviour
 				{
 					messageBufferCounter = 0;
 				}
+				
+				audioSource.PlayOneShot(messageEndSound);
 			}
 		}
 	}

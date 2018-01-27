@@ -2,15 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Ship))]
 public class ShipRadio : MonoBehaviour, IMessageReceiver
 {
+	[Header("Audio")]
+	[SerializeField] private AudioClip thrusterTurnSound;
+	
 	private Ship ship;
+	private AudioSource audioSource;
 
 	protected void Awake()
 	{
 		ship = GetComponent<Ship>();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 
@@ -31,6 +37,9 @@ public class ShipRadio : MonoBehaviour, IMessageReceiver
 			}
 
 			ship.RotationRate = shipRotation;
+
+			audioSource.pitch = Random.Range(.9f, 1.1f);
+			audioSource.PlayOneShot(thrusterTurnSound);
 			return true;
 		}
 
