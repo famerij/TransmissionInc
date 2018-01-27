@@ -8,6 +8,7 @@ public class PrologueLevelController : MonoBehaviour
 	public Ship ship;
 	public MessageTransmitter transmitter;
 	public FaderInOut levelEndFadeOut;
+	public string nextLevel;
 
 	public float tumbleTime = 2f;
 
@@ -54,6 +55,6 @@ public class PrologueLevelController : MonoBehaviour
 	public IEnumerator WaitThenEndLevel()
 	{
 		yield return new WaitForSeconds(2);
-		SceneManager.LoadScene("1_Level1");
+		SceneManager.LoadScene(nextLevel);
 	}
 }
