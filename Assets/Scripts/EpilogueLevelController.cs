@@ -14,10 +14,14 @@ public class EpilogueLevelController : MonoBehaviour
 	public float pausePerLine = 1.75f;
 	public float pauseLastLine = 3f;
 
+	public AudioClip typeSound;
+
+	private AudioSource audioSource;
 	private bool reportDone = false;
 
 	public void Start()
 	{
+		audioSource = GetComponent<AudioSource>();
 		missionReportCanvasGroup.gameObject.SetActive(false);
 	}
 
@@ -59,6 +63,9 @@ public class EpilogueLevelController : MonoBehaviour
 			for (int j = 0; j <= charCount; j++)
 			{
 				text.maxVisibleCharacters = j;
+
+				audioSource.pitch = Random.Range(.8f, 1.2f);
+				audioSource.PlayOneShot(typeSound);
 				yield return new WaitForSeconds(pausePerCharacter);
 			}
 			yield return new WaitForSeconds(i == texts.Length - 2 ? pauseLastLine : pausePerLine);
