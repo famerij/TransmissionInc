@@ -245,6 +245,11 @@ MonoBehaviour:
   - {fileID: 776116764}
   disabledTransmitters:
   - {fileID: 1563206724}
+  AllCollectiblesCollected:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!4 &1905796270
 Transform:
   m_ObjectHideFlags: 0
