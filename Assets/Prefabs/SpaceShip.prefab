@@ -505,6 +505,11 @@ MonoBehaviour:
   initialMessageRange: 1
   maxMessageRange: 99999
   drawMessages: 0
+  messageVisualPrefab: {fileID: 1104339558092756, guid: 55f096706a20fae498b450549da95f1a,
+    type: 2}
+  messageLeftColor: {r: 0, g: 1, b: 0, a: 1}
+  messageRightColor: {r: 0, g: 0, b: 1, a: 1}
+  messageStopColor: {r: 1, g: 0, b: 0, a: 1}
   messageStartSound: {fileID: 8300000, guid: 6eaa7571b662a444ebfb9dadf3e52c28, type: 3}
   messageEndSound: {fileID: 8300000, guid: 30f77d953f81144e28c762498221d475, type: 3}
   maxDistanceDiminish: 50
