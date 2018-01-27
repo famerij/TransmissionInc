@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceshipController : MonoBehaviour
+public class SpaceshipControllerCombo : MonoBehaviour
 {
 	public enum MessageCreationType
 	{

@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4960619792671362}
+  - component: {fileID: 114786330172160670}
   m_Layer: 0
   m_Name: Earth
   m_TagString: Untagged
@@ -69,6 +70,19 @@ Transform:
   m_Father: {fileID: 4960619792671362}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114786330172160670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1759584896154776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85afd4e61e8773d41b2e9cfe074d984f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messageExpansionSpeed: 3.5
+  initialMessageRange: 0.5
 --- !u!212 &212444921278479710
 SpriteRenderer:
   m_ObjectHideFlags: 1

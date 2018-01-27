@@ -19,7 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4663404189111450}
-  - component: {fileID: 114448690279708982}
+  - component: {fileID: 114302485098653434}
+  - component: {fileID: 114874063802342024}
   m_Layer: 0
   m_Name: SpaceShip
   m_TagString: Untagged
@@ -100,7 +101,7 @@ Transform:
   m_Father: {fileID: 4663404189111450}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114448690279708982
+--- !u!114 &114302485098653434
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -108,15 +109,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1065362525767134}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b1212df9e50640498a59b71afbb82f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 535d737dcfb2e4f48ae8466018a3aa50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creationType: 1
-  messageOrigin: {fileID: 0}
-  spaceshipSpeed: 0.8
-  messageExpansionSpeed: 2.5
-  initialMessageRange: 0.5
+  spaceshipSpeed: 1.5
   spaceshipRotationSpeed: 45
+--- !u!114 &114874063802342024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1065362525767134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c4b30241d27174eb148c3e54c95de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212019844792236998
 SpriteRenderer:
   m_ObjectHideFlags: 1
