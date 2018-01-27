@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60ce0e08534a47e28a253cdb861f5d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  script: {fileID: 4900000, guid: 9260f4843e81943b2a306ea2bd4e0b29, type: 3}
+  script: {fileID: 4900000, guid: 016387720f1f04f10b0309cfd5001129, type: 3}
   showOnStart: 1
   text: {fileID: 114025270441244750}
   pausePerCharacter: 0.04
@@ -289,7 +289,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

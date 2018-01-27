@@ -368,11 +368,21 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114356626374545316, guid: 51c821c0eb16743d1a724c5534bd3f35,
+    - target: {fileID: 114025270441244750, guid: 51c821c0eb16743d1a724c5534bd3f35,
         type: 2}
-      propertyPath: script
-      value: 
-      objectReference: {fileID: 4900000, guid: 016387720f1f04f10b0309cfd5001129, type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114025270441244750, guid: 51c821c0eb16743d1a724c5534bd3f35,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 223937805955484378, guid: 51c821c0eb16743d1a724c5534bd3f35,
+        type: 2}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51c821c0eb16743d1a724c5534bd3f35, type: 2}
   m_IsPrefabParent: 0
