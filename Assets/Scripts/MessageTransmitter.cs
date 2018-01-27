@@ -6,6 +6,7 @@ public class MessageTransmitter : MonoBehaviour
 {
 	[SerializeField] private float messageExpansionSpeed = 2.0f;
 	[SerializeField] private float initialMessageRange = 0.5f;
+	[SerializeField] private bool drawMessages;
 
 	private Message[] messageBuffer = new Message[200];
 	private int messageBufferCounter = 0;
@@ -89,7 +90,10 @@ public class MessageTransmitter : MonoBehaviour
 			{
 				messagesInUseCount++;
 				messageBuffer[i].range += (messageExpansionSpeed * Time.deltaTime);
-				DrawMessage(msg);
+				if (drawMessages)
+				{
+					DrawMessage(msg);
+				}
 
 				for(int r = 0; r < receivers.Count; r++)
 				{

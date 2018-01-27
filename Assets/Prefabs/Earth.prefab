@@ -83,6 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageExpansionSpeed: 3.5
   initialMessageRange: 0.5
+  drawMessages: 1
 --- !u!212 &212444921278479710
 SpriteRenderer:
   m_ObjectHideFlags: 1
