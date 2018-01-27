@@ -6,6 +6,7 @@ public class MessageTransmitter : MonoBehaviour
 {
 	[SerializeField] private float messageExpansionSpeed = 2.0f;
 	[SerializeField] private float initialMessageRange = 0.5f;
+	[SerializeField] private float maxMessageRange = -1.0f;
 	[SerializeField] private bool drawMessages;
 	
 
@@ -105,7 +106,7 @@ public class MessageTransmitter : MonoBehaviour
 			if (msg.inUse)
 			{
 				messagesInUseCount++;
-				messageBuffer[i].range += (messageExpansionSpeed * Time.deltaTime);
+				msg.range += (messageExpansionSpeed * Time.deltaTime);
 				if (drawMessages)
 				{
 					DrawMessage(msg);
@@ -116,8 +117,14 @@ public class MessageTransmitter : MonoBehaviour
 					if (receivers[r].ReceivedMessage(msg, this))
 					{
 						// For now only one receiver can receive it
-						messageBuffer[i].inUse = false;
+						msg.inUse = false;
 					}
+				}
+
+				// Cap the message range if max is set:
+				if(maxMessageRange > 0.0f && msg.range >= maxMessageRange)
+				{
+					msg.inUse = false;
 				}
 			}
 		}

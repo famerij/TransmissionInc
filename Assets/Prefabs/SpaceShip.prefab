@@ -417,6 +417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageExpansionSpeed: 2
   initialMessageRange: 1
+  maxMessageRange: 99999
   drawMessages: 0
   messageStartSound: {fileID: 8300000, guid: 6eaa7571b662a444ebfb9dadf3e52c28, type: 3}
   messageEndSound: {fileID: 8300000, guid: 30f77d953f81144e28c762498221d475, type: 3}
