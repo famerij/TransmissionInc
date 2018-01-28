@@ -31,6 +31,7 @@ public class TutorialLevelController : MonoBehaviour
 
 		float startTime = Time.time;
 		bool isFading = false;
+		ship.ToggleEnabled(false);
 
 		while (true)
 		{
@@ -39,7 +40,7 @@ public class TutorialLevelController : MonoBehaviour
 				isFading = true;
 				levelEndFadeOut.Fade();
 			}
-			
+
 			xSpeed += 1.1f * Time.deltaTime;
 			shipTransform.Rotate(0, 0, -Time.deltaTime * 250);
 			shipTransform.position = new Vector3(shipTransform.position.x + xSpeed * Time.deltaTime,

@@ -64,7 +64,7 @@ public class EpilogueLevelController : MonoBehaviour
 			{
 				text.maxVisibleCharacters = j;
 
-				audioSource.pitch = Random.Range(.8f, 1.2f);
+				audioSource.pitch = Random.Range(.9f, 1.1f);
 				audioSource.PlayOneShot(typeSound);
 				yield return new WaitForSeconds(pausePerCharacter);
 			}
