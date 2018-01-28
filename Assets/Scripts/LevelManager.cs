@@ -76,8 +76,14 @@ public class LevelManager : MonoBehaviour
 
 	public void OnShipCollided()
 	{
+		StartCoroutine(DelayedDeath(1f));
+	}
+
+	IEnumerator DelayedDeath(float delay)
+	{
+		yield return new WaitForSeconds(delay);
 		Die();
-    }
+	}
 
 	public void OnCollectibleCollected(Collectible collectible)
 	{

@@ -15,6 +15,7 @@ public class Ship : MonoBehaviour
 
 	[Header("Audio")]
 	[SerializeField] private AudioClip collisionSound;
+	[SerializeField] private AudioSource collisionAudioSource;
 	[SerializeField] private AudioSource engineAudioSource;
 
 	private float rotationRate;
@@ -76,5 +77,10 @@ public class Ship : MonoBehaviour
 		{
 			mainThruster.Stop();
 		}
+	}
+
+	public void Collision()
+	{
+		collisionAudioSource.PlayOneShot(collisionSound);
 	}
 }

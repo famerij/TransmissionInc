@@ -10,6 +10,8 @@ public class Obstacle : MonoBehaviour
 		Ship ship = coll.gameObject.GetComponent<Ship>();
 		if(ship != null)
 		{
+			ship.Collision();
+			ship.ToggleEnabled(false);
 			LevelManager levelManager = FindObjectOfType<LevelManager>();
 			if (levelManager != null)
 			{
