@@ -5,6 +5,8 @@ using UnityEngine.Experimental.UIElements;
 
 public class MessageTransmitter : MonoBehaviour
 {
+	private const float MESSAGE_INDICATOR_LIFETIME = 0.2f;
+
 	public bool isEnabled = true;
 	
 	[SerializeField] private float messageExpansionSpeed = 2.0f;
@@ -15,6 +17,7 @@ public class MessageTransmitter : MonoBehaviour
 	[SerializeField] private Color messageLeftColor = Color.green;
 	[SerializeField] private Color messageRightColor = Color.blue;
 	[SerializeField] private Color messageStopColor = Color.red;
+	[SerializeField] private GameObject sendMessageIndicator;
 
 	[Header("Audio")]
 	[SerializeField] private AudioClip messageStartSound;
@@ -29,6 +32,8 @@ public class MessageTransmitter : MonoBehaviour
 	private ShipRadio[] radios;
 
 	private List<GameObject> messageVisuals = new List<GameObject>();
+
+	private float sendMessageIndicatorTimer;
 
 	// Use this for initialization
 	void Start()
@@ -48,8 +53,9 @@ public class MessageTransmitter : MonoBehaviour
 
 	private void CreateMessages()
 	{
-		bool leftDown = Input.GetKeyDown(KeyCode.LeftArrow);
-		bool rightDown = Input.GetKeyDown(KeyCode.RightArrow);
+		bool messageGotCreated = false;
+		bool leftDown = Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A);
+		bool rightDown = Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D);
 		if (leftDown || rightDown)
 		{
 			if(messageBuffer[messageBufferCounter].inUse)
@@ -69,20 +75,12 @@ public class MessageTransmitter : MonoBehaviour
 				messageBuffer[messageBufferCounter].visual.transform.position = transform.position;
 				Color msgColor = leftDown ? messageLeftColor : messageRightColor;
                 messageBuffer[messageBufferCounter].visual.GetComponentInChildren<SpriteRenderer>().color = msgColor;
-
-				messageBufferCounter++;
-				if(messageBufferCounter == messageBuffer.Length)
-				{
-					messageBufferCounter = 0;
-				}
-				
-				if (drawMessages)
-					audioSource.PlayOneShot(messageStartSound);
+				messageGotCreated = true;
 			}
 		}
 
-		bool leftUp = Input.GetKeyUp(KeyCode.LeftArrow);
-		bool rightUp = Input.GetKeyUp(KeyCode.RightArrow);
+		bool leftUp = Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A);
+		bool rightUp = Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D);
 		if (leftUp || rightUp)
 		{
 			if(messageBuffer[messageBufferCounter].inUse)
@@ -101,16 +99,28 @@ public class MessageTransmitter : MonoBehaviour
 				messageBuffer[messageBufferCounter].visual = GetMessageVisual();
 				messageBuffer[messageBufferCounter].visual.transform.position = transform.position;
 				messageBuffer[messageBufferCounter].visual.GetComponentInChildren<SpriteRenderer>().color = messageStopColor;
-
-				messageBufferCounter++;
-				if(messageBufferCounter == messageBuffer.Length)
-				{
-					messageBufferCounter = 0;
-				}
-				
-				if (drawMessages)
-					audioSource.PlayOneShot(messageEndSound);
+				messageGotCreated = true;
 			}
+		}
+
+		if(messageGotCreated)
+		{
+			messageBufferCounter++;
+			if (messageBufferCounter == messageBuffer.Length)
+			{
+				messageBufferCounter = 0;
+			}
+
+			if (drawMessages)
+				audioSource.PlayOneShot(messageStartSound);
+
+			sendMessageIndicatorTimer = MESSAGE_INDICATOR_LIFETIME;
+		}
+
+		sendMessageIndicator.SetActive(sendMessageIndicatorTimer > 0.0f);
+		if (sendMessageIndicatorTimer > 0.0f)
+		{
+			sendMessageIndicatorTimer -= Time.deltaTime;
 		}
 	}
 
