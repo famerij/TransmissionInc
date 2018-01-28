@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PrologueLevelController : MonoBehaviour
 {
+	public SpriteRenderer backgroundRenderer;
+	public SpriteRenderer starsRenderer;
 	public Ship ship;
 	public MessageTransmitter transmitter;
 	public FaderInOut levelEndFadeOut;
@@ -29,6 +31,11 @@ public class PrologueLevelController : MonoBehaviour
 	{
 		Transform shipTransform = ship.transform;
 		float xSpeed = 0.3f;
+		float H;
+		float S;
+		float V;
+		Color.RGBToHSV(backgroundRenderer.color, out H, out S, out V);
+		var starsColor = starsRenderer.color;
 
 		while (true)
 		{
@@ -38,6 +45,11 @@ public class PrologueLevelController : MonoBehaviour
 			shipTransform.Rotate(0, 0, -Time.deltaTime * 250);
 			shipTransform.position = new Vector3(shipTransform.position.x + xSpeed * Time.deltaTime,
 				shipTransform.position.y, shipTransform.position.z);
+
+			V -= xSpeed * Time.deltaTime * 0.1f;
+			backgroundRenderer.color = Color.HSVToRGB(H, S, V);
+			starsColor.a += xSpeed * Time.deltaTime * 0.05f;
+			starsRenderer.color = starsColor;
 			yield return null;
 		}
 	}
