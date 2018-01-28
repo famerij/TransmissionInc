@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class EpilogueLevelController : MonoBehaviour
 {
@@ -15,12 +16,14 @@ public class EpilogueLevelController : MonoBehaviour
 	public float pauseLastLine = 3f;
 
 	public AudioClip typeSound;
+	public Image postMortem;
 
 	private AudioSource audioSource;
 	private bool reportDone = false;
 
 	public void Start()
 	{
+		postMortem.enabled = false;
 		audioSource = GetComponent<AudioSource>();
 		missionReportCanvasGroup.gameObject.SetActive(false);
 	}
@@ -53,6 +56,8 @@ public class EpilogueLevelController : MonoBehaviour
 
 		yield return new WaitForSeconds(pauseAfterFade);
 
+		StartCoroutine(DelayedShowPostMortem());
+
 		missionReportCanvasGroup.alpha = 1;
 
 		for (int i = 0; i < texts.Length; i++)
@@ -72,6 +77,25 @@ public class EpilogueLevelController : MonoBehaviour
 		}
 
 		reportDone = true;
+	}
+
+	private IEnumerator DelayedShowPostMortem()
+	{
+		yield return new WaitForSeconds(13f);
+		postMortem.enabled = true;
+
+		float startTime = Time.time;
+		float endTime = Time.time + fadeTime;
+
+		while (Time.time < endTime)
+		{
+			Color color = postMortem.color;
+
+			float targetAlpha = (Time.time - startTime) / (endTime - startTime);
+			color.a = targetAlpha;
+			postMortem.color = color;
+			yield return null;
+		}
 	}
 
 	void Update()
