@@ -51,14 +51,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059358129462100}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.51, y: 2.74, z: -0.093909964}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.29681262, w: 0.9549358}
+  m_LocalPosition: {x: -14.65, y: -0.72, z: -0.093909964}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 4930228770210938}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 34.533}
 --- !u!4 &4930228770210938
 Transform:
   m_ObjectHideFlags: 1
@@ -67,7 +67,7 @@ Transform:
   m_GameObject: {fileID: 1031403806506506}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.570308, y: 1.5703079, z: 1.5703079}
   m_Children: []
   m_Father: {fileID: 4656567193584224}
   m_RootOrder: 0
@@ -96,18 +96,22 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.65999997, y: 0.59999996}
-      - {x: -0.61, y: 0.59999996}
-      - {x: -0.7, y: 0.55}
-      - {x: -0.82, y: 0.42}
-      - {x: -0.82, y: -0.39999998}
-      - {x: -0.69, y: -0.53}
-      - {x: -0.58, y: -0.59}
-      - {x: -0.57, y: -0.59999996}
-      - {x: 0.59999996, y: -0.59999996}
-      - {x: 0.77, y: -0.48}
-      - {x: 0.82, y: -0.37}
-      - {x: 0.82, y: 0.41}
+    - - {x: 0.6975323, y: 0.46732026}
+      - {x: 0.51725733, y: 0.586311}
+      - {x: -0.49904743, y: 0.586178}
+      - {x: -0.6684183, y: 0.5041043}
+      - {x: -0.7580675, y: 0.4118961}
+      - {x: -0.80885553, y: 0.2610929}
+      - {x: -0.81024903, y: -0.2749417}
+      - {x: -0.742278, y: -0.4245842}
+      - {x: -0.66729885, y: -0.4974718}
+      - {x: -0.61038876, y: -0.5376478}
+      - {x: -0.47101337, y: -0.58824193}
+      - {x: 0.5057849, y: -0.58593184}
+      - {x: 0.65213656, y: -0.5216544}
+      - {x: 0.7613026, y: -0.41206244}
+      - {x: 0.8106272, y: -0.25810102}
+      - {x: 0.8037929, y: 0.28613472}
 --- !u!114 &114000037516509980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198da3e8e9d569a4e89052f6ec2a1ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
+  rotationSpeed: 0
 --- !u!212 &212453695823528028
 SpriteRenderer:
   m_ObjectHideFlags: 1

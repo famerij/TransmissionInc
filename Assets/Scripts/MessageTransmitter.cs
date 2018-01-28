@@ -117,10 +117,13 @@ public class MessageTransmitter : MonoBehaviour
 			sendMessageIndicatorTimer = MESSAGE_INDICATOR_LIFETIME;
 		}
 
-		sendMessageIndicator.SetActive(sendMessageIndicatorTimer > 0.0f);
-		if (sendMessageIndicatorTimer > 0.0f)
+		if (sendMessageIndicator != null)
 		{
-			sendMessageIndicatorTimer -= Time.deltaTime;
+			sendMessageIndicator.SetActive(sendMessageIndicatorTimer > 0.0f);
+			if (sendMessageIndicatorTimer > 0.0f)
+			{
+				sendMessageIndicatorTimer -= Time.deltaTime;
+			}
 		}
 	}
 
