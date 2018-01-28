@@ -16,18 +16,18 @@ public class TutorialLevelController : MonoBehaviour
 	private Coroutine spinRoutine;
 	private bool levelStarted;
 
-	protected void Start()
-	{
-		ship.ToggleEnabled(false);
-	}
+	//protected void Start()
+	//{
+	//	ship.ToggleEnabled(false);
+	//}
 
-	protected void Update()
-	{
-		if(!levelStarted && Input.anyKeyDown)
-		{
-			ship.ToggleEnabled(true);
-        }
-	}
+	//protected void Update()
+	//{
+	//	if(!levelStarted && Input.anyKeyDown)
+	//	{
+	//		ship.ToggleEnabled(true);
+	//	}
+	//}
 
 	public void AllCollectablesCollected()
 	{
