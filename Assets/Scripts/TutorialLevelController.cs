@@ -16,10 +16,10 @@ public class TutorialLevelController : MonoBehaviour
 	private Coroutine spinRoutine;
 	private bool levelStarted;
 
-	//protected void Start()
-	//{
-	//	ship.ToggleEnabled(false);
-	//}
+	protected void Start()
+	{
+		ship.ToggleEnabled(true);
+	}
 
 	//protected void Update()
 	//{
