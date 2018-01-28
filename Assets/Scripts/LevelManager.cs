@@ -17,6 +17,8 @@ public class LevelManager : MonoBehaviour
 	public UnityEvent AllCollectiblesCollected = new UnityEvent();
 	public UnityEvent FastGateReached;
 
+	public static string deathLevel;
+
 	private Ship ship;
 	private Vector3 shipStartPosition;
 	private List<Collectible> collectibles = new List<Collectible>();
@@ -134,6 +136,7 @@ public class LevelManager : MonoBehaviour
 	private void Die()
 	{
 		Debug.Log("Player died! Restarting scene.");
+		deathLevel = SceneManager.GetActiveScene().name;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 

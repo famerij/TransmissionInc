@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class ConsoleMessage : MonoBehaviour
 {
@@ -25,8 +26,17 @@ public class ConsoleMessage : MonoBehaviour
 		audioSource = GetComponent<AudioSource>();
 		text.text = "";
 		lines = script.text.Replace("\r", "").Split(new char[] {'\n'});
-		
-		ShowTextLine();
+
+		if (LevelManager.deathLevel == SceneManager.GetActiveScene().name)
+		{
+			// User just died on this level, skip message
+			onDone.Invoke();
+			gameObject.SetActive(false);
+		}
+		else
+		{
+			ShowTextLine();
+		}
 	}
 
 	public void Show()

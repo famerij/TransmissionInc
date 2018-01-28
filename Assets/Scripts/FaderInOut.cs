@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class FaderInOut : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class FaderInOut : MonoBehaviour
 
 	protected void Start()
 	{
-		if (fadeOnStart)
+		// Skip fade-in if user just died on this level
+		if (fadeOnStart && (fadeType == FadeType.FadeIn && LevelManager.deathLevel != SceneManager.GetActiveScene().name))
 		{
 			Fade();
 		}
