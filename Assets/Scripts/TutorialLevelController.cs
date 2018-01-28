@@ -14,6 +14,20 @@ public class TutorialLevelController : MonoBehaviour
 	public float tumbleTime = 2f;
 
 	private Coroutine spinRoutine;
+	private bool levelStarted;
+
+	protected void Start()
+	{
+		ship.ToggleEnabled(false);
+	}
+
+	protected void Update()
+	{
+		if(!levelStarted && Input.anyKeyDown)
+		{
+			ship.ToggleEnabled(true);
+        }
+	}
 
 	public void AllCollectablesCollected()
 	{
