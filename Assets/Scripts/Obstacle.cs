@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
@@ -11,7 +8,7 @@ public class Obstacle : MonoBehaviour
 		if(ship != null)
 		{
 			ship.Collision();
-			ship.ToggleEnabled(false);
+			
 			LevelManager levelManager = FindObjectOfType<LevelManager>();
 			if (levelManager != null)
 			{

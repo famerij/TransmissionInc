@@ -490,6 +490,8 @@ MonoBehaviour:
   collisionSound: {fileID: 8300000, guid: 9869dd7d9b1ab4c7fa5a82924a3e7b55, type: 3}
   collisionAudioSource: {fileID: 82819234955162586}
   engineAudioSource: {fileID: 82251472110588974}
+  deathEffectPrefab: {fileID: 1245817842141596, guid: 5da58df2313f9c6419f8fe66b60cef77,
+    type: 2}
 --- !u!114 &114379952266639760
 MonoBehaviour:
   m_ObjectHideFlags: 1

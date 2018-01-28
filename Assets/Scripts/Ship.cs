@@ -17,6 +17,8 @@ public class Ship : MonoBehaviour
 	[SerializeField] private AudioClip collisionSound;
 	[SerializeField] private AudioSource collisionAudioSource;
 	[SerializeField] private AudioSource engineAudioSource;
+	[Header("Effects")]
+	[SerializeField] private GameObject deathEffectPrefab;
 
 	private float rotationRate;
 	public float RotationRate
@@ -81,6 +83,12 @@ public class Ship : MonoBehaviour
 
 	public void Collision()
 	{
+		ToggleEnabled(false);
 		collisionAudioSource.PlayOneShot(collisionSound);
+		if (deathEffectPrefab != null)
+		{
+			Instantiate<GameObject>(deathEffectPrefab, transform);
+		}
+		gameObject.AddComponent<Spinner>().RotationSpeed = -30.0f;
 	}
 }
