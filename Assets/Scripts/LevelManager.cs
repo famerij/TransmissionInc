@@ -13,12 +13,15 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private float shipStartFadeDistance = 15.0f;
 	[SerializeField] private float shipMaxDistance = 20.0f;
 
+
 	public UnityEvent AllCollectiblesCollected = new UnityEvent();
+	public UnityEvent FastGateReached;
 
 	private Ship ship;
 	private Vector3 shipStartPosition;
 	private List<Collectible> collectibles = new List<Collectible>();
 	private FaderInOut fader;
+	private string pendingNextLevel;
 
 	protected void Start ()
 	{
@@ -101,14 +104,25 @@ public class LevelManager : MonoBehaviour
 	private void OnFastGateReached(FastGate fastGate)
 	{
 		Debug.Log("FastGate reached, loading scene: " + fastGate.DestinationSceneName);
+		pendingNextLevel = fastGate.DestinationSceneName;
 		ship.ToggleEnabled(false);
-		StartCoroutine(DelayedSceneLoad(fastGate.DelayBeforeJump, fastGate.DestinationSceneName));
+		StartCoroutine(DelayedFadeOut(fastGate.DelayBeforeJump));
 	}
 
-	private IEnumerator DelayedSceneLoad(float delay, string sceneName)
+	private IEnumerator DelayedFadeOut(float delay)
 	{
 		yield return new WaitForSeconds(delay);
-		SceneManager.LoadScene(sceneName);
+		FastGateReached.Invoke();
+	}
+
+	public void NextLevel()
+	{
+		Invoke("LoadNextLevel", 2);
+	}
+
+	private void LoadNextLevel()
+	{
+		SceneManager.LoadScene(pendingNextLevel);
 	}
 
 	private void Die()
