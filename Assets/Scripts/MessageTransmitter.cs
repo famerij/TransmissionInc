@@ -6,6 +6,7 @@ using UnityEngine.Experimental.UIElements;
 public class MessageTransmitter : MonoBehaviour
 {
 	private const float MESSAGE_INDICATOR_LIFETIME = 0.2f;
+	private const float INPUT_THRESHOLD = 0.2f;
 
 	public bool isEnabled = true;
 	
@@ -34,6 +35,7 @@ public class MessageTransmitter : MonoBehaviour
 	private List<GameObject> messageVisuals = new List<GameObject>();
 
 	private float sendMessageIndicatorTimer;
+	private bool isButtonDown;
 
 	// Use this for initialization
 	void Start()
@@ -54,11 +56,14 @@ public class MessageTransmitter : MonoBehaviour
 	private void CreateMessages()
 	{
 		bool messageGotCreated = false;
-		bool leftDown = Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A);
-		bool rightDown = Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D);
-		if (leftDown || rightDown)
+
+		float h = Input.GetAxisRaw("Horizontal");
+		bool leftDown = (h < -INPUT_THRESHOLD);
+		bool rightDown = (h > INPUT_THRESHOLD);
+		if ((leftDown || rightDown) && !isButtonDown)
 		{
-			if(messageBuffer[messageBufferCounter].inUse)
+			isButtonDown = true;
+			if (messageBuffer[messageBufferCounter].inUse)
 			{
 				Debug.LogWarning("Buffer overrun! Increase its size pls");
 			}
@@ -79,18 +84,16 @@ public class MessageTransmitter : MonoBehaviour
 			}
 		}
 
-		bool leftUp = Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A);
-		bool rightUp = Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D);
-		if (leftUp || rightUp)
+		bool released = (Mathf.Abs(h) < INPUT_THRESHOLD);
+		if (isButtonDown && released)
 		{
-			if(messageBuffer[messageBufferCounter].inUse)
+			isButtonDown = false;
+			if (messageBuffer[messageBufferCounter].inUse)
 			{
 				Debug.LogWarning("Buffer overrun! Increase its size pls");
 			}
 			else
 			{
-				messageBuffer[messageBufferCounter].left = leftUp;
-				messageBuffer[messageBufferCounter].right = rightUp;
 				messageBuffer[messageBufferCounter].range = initialMessageRange;
 				messageBuffer[messageBufferCounter].creationPosition = transform.position;
 				messageBuffer[messageBufferCounter].inUse = true;
@@ -240,7 +243,6 @@ public class MessageTransmitter : MonoBehaviour
 			GameObject go = Instantiate<GameObject>(messageVisualPrefab, transform);
 			messageVisuals.Add(go);
 			result = go;
-			Debug.Log("Created new visual number: " + messageVisuals.Count);
 		}
 
 		return result;
