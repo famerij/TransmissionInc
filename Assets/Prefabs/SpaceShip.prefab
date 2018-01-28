@@ -481,9 +481,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535d737dcfb2e4f48ae8466018a3aa50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnabled: 1
-  spaceshipSpeed: 1.5
-  spaceshipRotationSpeed: 120
+  isEnabled: 0
+  spaceshipSpeed: 1
+  spaceshipRotationSpeed: 140
   mainThruster: {fileID: 198229983324389524}
   leftThruster: {fileID: 198432831427567648}
   rightThruster: {fileID: 198211177679020572}
