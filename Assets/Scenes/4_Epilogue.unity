@@ -145,7 +145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 52.95337}
+  m_AnchoredPosition: {x: 0, y: 90}
   m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &158350191
@@ -299,7 +299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 24.582825}
+  m_AnchoredPosition: {x: 0, y: 61.6294}
   m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &309831550
@@ -515,7 +515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 125}
+  m_AnchoredPosition: {x: 0, y: 155}
   m_SizeDelta: {x: 400, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &851745831
@@ -669,7 +669,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -4}
+  m_AnchoredPosition: {x: 0, y: 33.046574}
   m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1008299854
@@ -996,10 +996,10 @@ RectTransform:
   m_Father: {fileID: 1821472069}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -97, y: 90}
-  m_SizeDelta: {x: 287.6, y: 289.76}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -0.0000019073, y: 101.8}
+  m_SizeDelta: {x: 256.5, y: 258.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1679159950
 MonoBehaviour:
@@ -1073,7 +1073,7 @@ MonoBehaviour:
   pauseAfterFade: 0.3
   pausePerCharacter: 0.04
   pausePerLine: 1.5
-  pauseLastLine: 3
+  pauseLastLine: 5
   typeSound: {fileID: 8300000, guid: f3b0a681740154d04ace1fe03139667a, type: 3}
   postMortem: {fileID: 1679159950}
 --- !u!4 &1722425578
@@ -1366,12 +1366,12 @@ Prefab:
     - target: {fileID: 114025270441244750, guid: 51c821c0eb16743d1a724c5534bd3f35,
         type: 2}
       propertyPath: m_firstOverflowCharacterIndex
-      value: 4
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 114025270441244750, guid: 51c821c0eb16743d1a724c5534bd3f35,
         type: 2}
       propertyPath: m_textInfo.lineCount
-      value: 23
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114025270441244750, guid: 51c821c0eb16743d1a724c5534bd3f35,
         type: 2}
@@ -1489,7 +1489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 42}
+  m_AnchoredPosition: {x: 0, y: 25.3}
   m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2103451131
@@ -1539,8 +1539,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
