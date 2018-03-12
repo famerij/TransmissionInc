@@ -18,7 +18,6 @@ public class GameDebug : MonoBehaviour
 			int fromKey = (int)KeyCode.Alpha1;
 			string[] levels = new string[] {
 				"0_0Tutorial",
-				"0_1Prologue",
 				"1_Level1",
 				"2_Level2",
 				"3_Level3",

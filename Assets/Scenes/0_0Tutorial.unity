@@ -712,7 +712,7 @@ MonoBehaviour:
   ship: {fileID: 2025561191}
   transmitter: {fileID: 1563206724}
   levelEndFadeOut: {fileID: 428243718}
-  nextLevel: 0_1Prologue
+  nextLevel: 1_Level1
   levelManager: {fileID: 1905796269}
   tumbleTime: 2
 --- !u!4 &1291583052
