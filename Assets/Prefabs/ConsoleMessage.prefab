@@ -295,6 +295,7 @@ MonoBehaviour:
   showOnStart: 1
   text: {fileID: 114025270441244750}
   pausePerCharacter: 0.04
+  pauseBeforeNext: 1.5
   onDone:
     m_PersistentCalls:
       m_Calls:

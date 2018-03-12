@@ -14,11 +14,13 @@ public class ConsoleMessage : MonoBehaviour
 	public bool showOnStart;
 	public TMP_Text text;
 	public float pausePerCharacter = 0.055f;
+	public float pauseBeforeNext = 2f;
 	public UnityEvent onDone;
 
 	private int currentLine = 0;
 	private string[] lines;
 	private Coroutine showCharactersCoroutine;
+	private Coroutine pauseCoroutine;
 	private AudioSource audioSource;
 
 	protected void Start ()
@@ -63,31 +65,52 @@ public class ConsoleMessage : MonoBehaviour
 			text.maxVisibleCharacters++;
 			yield return new WaitForSeconds(pausePerCharacter);
 		}
+
+		pauseCoroutine = StartCoroutine(PauseThenShowNextLine());
 		showCharactersCoroutine = null;
+	}
+
+	public IEnumerator PauseThenShowNextLine()
+	{
+		yield return new WaitForSeconds(pauseBeforeNext);
+		pauseCoroutine = null;
+		NextLine();
 	}
 
 	protected void Update ()
 	{
 		if (Input.anyKeyDown) 
 		{
-			if (showCharactersCoroutine != null)
+			NextLine();
+		}
+	}
+
+	private void NextLine()
+	{
+		if (pauseCoroutine != null)
+		{
+			StopCoroutine(pauseCoroutine);
+			pauseCoroutine = null;
+		}
+
+		if (showCharactersCoroutine != null)
+		{
+			StopCoroutine(showCharactersCoroutine);
+			showCharactersCoroutine = null;
+			text.maxVisibleCharacters = lines[currentLine].Length;
+			pauseCoroutine = StartCoroutine(PauseThenShowNextLine());
+		}
+		else
+		{
+			currentLine++;
+			if (currentLine < lines.Length)
 			{
-				StopCoroutine(showCharactersCoroutine);
-				showCharactersCoroutine = null;
-				text.maxVisibleCharacters = lines[currentLine].Length;
+				ShowTextLine();
 			}
 			else
 			{
-				currentLine++;
-				if (currentLine < lines.Length)
-				{
-					ShowTextLine();
-				}
-				else
-				{
-					onDone.Invoke();
-					gameObject.SetActive(false);
-				}
+				onDone.Invoke();
+				gameObject.SetActive(false);
 			}
 		}
 	}
