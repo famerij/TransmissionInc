@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EpilogueLevelController : MonoBehaviour
 {
@@ -102,8 +103,7 @@ public class EpilogueLevelController : MonoBehaviour
 	{
 		if (reportDone && Input.anyKeyDown)
 		{
-			Debug.Log("Quitting game.");
-			Application.Quit();
+			SceneManager.LoadScene(0);
 		}
 	}
 }
