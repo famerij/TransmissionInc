@@ -1069,10 +1069,10 @@ MonoBehaviour:
   - {fileID: 309831550}
   - {fileID: 1008299854}
   - {fileID: 2103451131}
-  fadeTime: 5
-  pauseAfterFade: 1
-  pausePerCharacter: 0.055
-  pausePerLine: 1.75
+  fadeTime: 4
+  pauseAfterFade: 0.3
+  pausePerCharacter: 0.04
+  pausePerLine: 1.5
   pauseLastLine: 3
   typeSound: {fileID: 8300000, guid: f3b0a681740154d04ace1fe03139667a, type: 3}
   postMortem: {fileID: 1679159950}

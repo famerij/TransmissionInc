@@ -294,7 +294,7 @@ MonoBehaviour:
   script: {fileID: 4900000, guid: 9260f4843e81943b2a306ea2bd4e0b29, type: 3}
   showOnStart: 1
   text: {fileID: 114025270441244750}
-  pausePerCharacter: 0.04
+  pausePerCharacter: 0.033
   pauseBeforeNext: 1.5
   onDone:
     m_PersistentCalls:

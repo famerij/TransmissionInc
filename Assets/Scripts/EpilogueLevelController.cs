@@ -35,7 +35,7 @@ public class EpilogueLevelController : MonoBehaviour
 
 	private IEnumerator DoMissionReport()
 	{
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1.3f);
 
 		missionReportCanvasGroup.gameObject.SetActive(true);
 		missionReportCanvasGroup.alpha = 0;
@@ -81,7 +81,7 @@ public class EpilogueLevelController : MonoBehaviour
 
 	private IEnumerator DelayedShowPostMortem()
 	{
-		yield return new WaitForSeconds(13f);
+		yield return new WaitForSeconds(11f);
 		postMortem.enabled = true;
 
 		float startTime = Time.time;
