@@ -22,7 +22,7 @@ public class Collectible : MonoBehaviour
 
 	public virtual void Collect()
 	{
-		Debug.Log("Collected: " + gameObject.name);
+		//Debug.Log("Collected: " + gameObject.name);
 		//TODO: Fire off effects if any are made
 		audioSource.PlayOneShot(soundClip);
 		graphics.SetActive(false);
